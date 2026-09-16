@@ -6,7 +6,7 @@
 
 ## Purpose
 
-This contract defines the aggregate data allowed inside the prototype and the smaller allowlist intended for DX. The TypeScript declarations live in [`src/contracts.ts`](../src/contracts.ts). Runtime parsing and serialization are later phases; the declarations alone do not sanitize untrusted data.
+This contract defines the aggregate data allowed inside the prototype and the smaller allowlist intended for DX. The TypeScript declarations live in [`src/contracts.ts`](../src/contracts.ts). The Phase 2 OpenCode adapter parses untrusted local statistics into the internal summary; outbound DX serialization remains a later phase.
 
 ## Grain and Identity
 
@@ -104,4 +104,4 @@ Provider and model identifiers are permitted only as aggregate grouping labels. 
 
 ## Validation Rules
 
-Runtime code added in later phases must reject malformed dates, invalid timezones, negative/non-finite/fractional counts, non-finite costs, unknown response shapes, and unsupported OpenCode versions. The outbound serializer must be covered by tests that prove prohibited and unknown fields cannot enter JSON output.
+The runtime parser rejects malformed dates, invalid timezones, negative/non-finite/fractional counts, non-finite costs, unknown response shapes, and unsupported OpenCode versions. The outbound serializer added in a later phase must be covered by tests that prove prohibited and unknown fields cannot enter JSON output.

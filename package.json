@@ -4,6 +4,9 @@
   "private": true,
   "description": "Private, opt-in prototype for reviewing sanitized OpenCode daily aggregates before a controlled DX export.",
   "type": "module",
+  "bin": {
+    "opencode-dx-metrics": "dist/cli.js"
+  },
   "engines": {
     "node": ">=20.19.0"
   },
@@ -12,6 +15,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
+    "report": "npm run build --silent && node dist/cli.js report",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
@@ -23,5 +27,8 @@
     "typescript": "5.9.3",
     "typescript-eslint": "8.70.0",
     "vitest": "4.1.11"
+  },
+  "dependencies": {
+    "@opencode/client": "2.0.5"
   }
 }

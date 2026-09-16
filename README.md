@@ -2,7 +2,7 @@
 
 A private, opt-in prototype for reviewing aggregate OpenCode V2 usage and testing one controlled daily submission to DX.
 
-**Status:** Prototype contract and RFC baseline; no working CLI or DX export yet  
+**Status:** Local aggregate reporting prototype; no DX payload or export yet
 **Last reviewed:** 2026-09-16  
 **Maintainer:** Prototype owner, with AI Enablement and DX reviewers
 
@@ -39,7 +39,7 @@ This prototype does not implement a plugin, daemon, schedule, automatic retry, d
 
 - Node.js 20.19 or newer (`.nvmrc` records the version used for this baseline)
 - npm 10 or newer
-- OpenCode V2 is needed only for later local integration phases
+- OpenCode 2.0.5 (the tested V2 release) for local report commands
 
 ### Install and validate
 
@@ -54,11 +54,23 @@ npm test
 npm run build
 ```
 
-Use `npm run format` to apply repository formatting. The current tests validate the synthetic contract fixtures; CLI behavior arrives in later phases.
+Use `npm run format` to apply repository formatting.
+
+### Produce a local report
+
+The report command discovers an already-running OpenCode background service. It never starts or stops OpenCode, reads its database, or contacts DX. Both the calendar date and IANA timezone are required so host defaults cannot change the reporting boundary:
+
+```sh
+npm run report -- --date 2026-09-16 --timezone Etc/UTC --dry-run
+```
+
+`--dry-run` is optional because `report` is always local and read-only. The command requests aggregate-only statistics with a five-second timeout and prints a typed JSON daily summary. OpenCode 2.0.5 is the only tested service version; other versions fail with compatibility guidance instead of producing partial data.
+
+Launching OpenCode alone does not make a day active. A report is active only when the API reports at least one prompt or completed model step. A healthy no-usage day produces a valid inactive zero summary, while unavailable, incompatible, or malformed service data exits nonzero.
 
 ## Configuration
 
-No runtime configuration is consumed yet. Later phases will require explicit reporting identity and timezone settings. The controlled export phase will read its DX endpoint and bearer token only from untracked environment variables or another approved local secret source. Git identity is never a fallback.
+The report command consumes no identity or DX configuration. Its reporting timezone is an explicit `--timezone` argument. Later phases will require explicit reporting identity. The controlled export phase will read its DX endpoint and bearer token only from untracked environment variables or another approved local secret source. Git identity is never a fallback.
 
 ## Design and Review Documents
 

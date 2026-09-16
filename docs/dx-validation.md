@@ -98,13 +98,13 @@ Expected observation: one aggregate `matched` result for the approved volunteer.
 
 ## Local OpenCode Coverage Evidence
 
-No developer-machine evidence has been collected yet. Add only redacted aggregates during Phase 2.
+Phase 2 local checks used the tested OpenCode 2.0.5 service and the CLI's aggregate-only output. No raw response or identifying data was retained.
 
-| Coverage                        | Status  | Evidence to record                                                              |
-| ------------------------------- | ------- | ------------------------------------------------------------------------------- |
-| Direct Anthropic-backed session | Pending | Date/timezone, provider/model label, aggregate steps/tokens only                |
-| OpenAI/Codex-backed session     | Pending | Date/timezone, provider/model label, aggregate steps/tokens and overlap warning |
-| Known no-usage date             | Pending | Inactive flag and zero totals from a successful supported query                 |
+| Coverage                        | Status   | Evidence                                                                                                                                                                        |
+| ------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Direct Anthropic-backed session | Pending  | The available active date contained only gateway-backed model groups; a direct Anthropic session still needs a redacted run.                                                    |
+| OpenAI/Codex-backed session     | Pending  | The available active date contained only gateway-backed model groups; a direct OpenAI/Codex session still needs a redacted run. Codex totals may overlap DX's vendor connector. |
+| Known no-usage date             | Verified | Explicit `Etc/UTC` query returned inactive status, zero sessions/prompts/steps/tokens, and no provider/model groups.                                                            |
 
 ## Pilot Submission Record
 
