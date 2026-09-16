@@ -1,6 +1,6 @@
 # OpenCode-to-DX Prototype Test Plan
 
-**Status:** Draft; execution begins in later phases  
+**Status:** Phase 3 automated payload coverage implemented; manual matrix remains open
 **Last reviewed:** 2026-09-16  
 **Maintainer:** Prototype owner
 
@@ -38,6 +38,8 @@
 - Verify deterministic JSON and the exact outbound allowlist.
 - Attempt to inject session IDs, paths, prompt text, tool names/details, raw events, unknown stats, undefined values, and secret-like configuration; assert none can enter output.
 - Assert dry-run mode has no DX DNS/HTTP capability.
+
+The Phase 3 automated suite exercises identity validation, deterministic fixture matching, cache and active-state mapping, cost omission, secret redaction, and attempts to inject prohibited/unknown source fields. `report --dry-run` and `doctor` contain no DX transport; live export failure scenarios remain Phase 4 work.
 
 ### Failure handling
 

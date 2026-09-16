@@ -6,7 +6,7 @@
 
 ## Purpose
 
-This contract defines the aggregate data allowed inside the prototype and the smaller allowlist intended for DX. The TypeScript declarations live in [`src/contracts.ts`](../src/contracts.ts). The Phase 2 OpenCode adapter parses untrusted local statistics into the internal summary; outbound DX serialization remains a later phase.
+This contract defines the aggregate data allowed inside the prototype and the smaller allowlist intended for DX. The TypeScript declarations live in [`src/contracts.ts`](../src/contracts.ts). The OpenCode adapter parses untrusted local statistics into the internal summary, and [`src/dx-payload.ts`](../src/dx-payload.ts) constructs a new outbound object from the allowlist without passing through arbitrary source fields.
 
 ## Grain and Identity
 
@@ -74,7 +74,7 @@ The request envelope is `{ "data": [record] }`. GoodRx implementation evidence d
 - optional `tool_outcomes`, containing only `calls`, `succeeded`, `failed`, and `unfinished`
 - optional estimate provenance/version only if a later approved cost policy defines exact field names
 
-The serializer will construct a new object from these fields. It will not pass through an OpenCode response or arbitrary metadata object.
+The serializer constructs a new object from these fields. It does not pass through an OpenCode response or arbitrary metadata object. Provider/model groups are sorted by provider then model so equivalent summaries render deterministically.
 
 ## Cost Policy
 
@@ -104,4 +104,4 @@ Provider and model identifiers are permitted only as aggregate grouping labels. 
 
 ## Validation Rules
 
-The runtime parser rejects malformed dates, invalid timezones, negative/non-finite/fractional counts, non-finite costs, unknown response shapes, and unsupported OpenCode versions. The outbound serializer added in a later phase must be covered by tests that prove prohibited and unknown fields cannot enter JSON output.
+The runtime parser rejects malformed dates, invalid timezones, negative/non-finite/fractional counts, non-finite costs, unknown response shapes, and unsupported OpenCode versions. The outbound serializer revalidates its date, timezone, identity, labels, and counts. Tests prove prohibited, undefined, and unknown source fields cannot enter JSON output. `spend_cents` is not implemented because no estimate policy is approved.

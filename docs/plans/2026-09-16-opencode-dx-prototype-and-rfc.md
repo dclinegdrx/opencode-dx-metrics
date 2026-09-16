@@ -125,7 +125,7 @@ The CLI can explicitly query OpenCode V2.5 through its supported local service/c
 
 ## Phase 3: Render and validate a DX-compatible pilot payload in dry-run mode
 
-**Status: NOT STARTED**
+**Status: COMPLETE**
 
 ### Goal
 

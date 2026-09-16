@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "doctor": "npm run build --silent && node dist/cli.js doctor",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
