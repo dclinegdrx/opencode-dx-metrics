@@ -1,0 +1,19 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Generated pilot output and local evidence
+pilot-output/
+*.pilot.json
+*.redacted.txt
+
+# Tool and OS files
+.DS_Store
+*.log

@@ -60,7 +60,7 @@ The first prototype is a manually invoked CLI, not an OpenCode plugin, daemon, s
 
 ## Phase 1: Establish the prototype contract and reviewable RFC baseline
 
-**Status: NOT STARTED**
+**Status: COMPLETE**
 
 ### Goal
 

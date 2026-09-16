@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-16",
+  "timezone": "Etc/UTC",
+  "active": true,
+  "sessions": 3,
+  "prompts": 5,
+  "completedSteps": 7,
+  "subagents": 1,
+  "tokens": {
+    "input": 2400,
+    "output": 900,
+    "reasoning": 120,
+    "cacheRead": 750,
+    "cacheWrite": 180
+  },
+  "providerModels": [
+    {
+      "provider": "anthropic",
+      "model": "fictional-claude-model",
+      "completedSteps": 4,
+      "tokens": {
+        "input": 1400,
+        "output": 500,
+        "reasoning": 0,
+        "cacheRead": 600,
+        "cacheWrite": 180
+      },
+      "estimatedCostUsd": 0.052
+    },
+    {
+      "provider": "openai",
+      "model": "fictional-codex-model",
+      "completedSteps": 3,
+      "tokens": {
+        "input": 1000,
+        "output": 400,
+        "reasoning": 120,
+        "cacheRead": 150,
+        "cacheWrite": 0
+      },
+      "estimatedCostUsd": 0.032
+    }
+  ],
+  "estimatedCostUsd": 0.084,
+  "toolOutcomes": {
+    "calls": 9,
+    "succeeded": 8,
+    "failed": 1,
+    "unfinished": 0
+  }
+}

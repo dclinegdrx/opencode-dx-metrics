@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "email": "pilot.user@example.invalid",
+      "date": "2026-09-16",
+      "is_active": true,
+      "tool": "opencode-pilot",
+      "input_tokens": 2400,
+      "output_tokens": 900,
+      "cache_read_tokens": 750,
+      "cache_write_tokens": 180,
+      "metrics": {
+        "sessions": 3,
+        "prompts": 5,
+        "completed_steps": 7,
+        "subagents": 1,
+        "reasoning_tokens": 120,
+        "providers": [
+          {
+            "provider": "anthropic",
+            "model": "fictional-claude-model",
+            "completed_steps": 4,
+            "input_tokens": 1400,
+            "output_tokens": 500,
+            "reasoning_tokens": 0,
+            "cache_read_tokens": 600,
+            "cache_write_tokens": 180
+          },
+          {
+            "provider": "openai",
+            "model": "fictional-codex-model",
+            "completed_steps": 3,
+            "input_tokens": 1000,
+            "output_tokens": 400,
+            "reasoning_tokens": 120,
+            "cache_read_tokens": 150,
+            "cache_write_tokens": 0
+          }
+        ],
+        "tool_outcomes": {
+          "calls": 9,
+          "succeeded": 8,
+          "failed": 1,
+          "unfinished": 0
+        }
+      }
+    }
+  ]
+}
